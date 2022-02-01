@@ -1,0 +1,5 @@
+Numéro du voyageur : 0
+Numéro du logement : 7
+Date d'arrivée (DD/MM/YYYY) : 23/03/2022
+Nombre de nuits : 2
+Nombre de personnes : 2

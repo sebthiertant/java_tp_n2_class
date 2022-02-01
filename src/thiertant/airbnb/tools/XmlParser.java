@@ -17,7 +17,7 @@ public class XmlParser {
 
     private static final String FILENAME = "src/ressources/lodgings.xml";
 
-    public void ParseXml(ArrayList arrayList){
+    public void ParseXml(ArrayList listHotes, ArrayList listLogements){
 
         try {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -42,6 +42,7 @@ public class XmlParser {
             int age = Integer.parseInt(eElement.getElementsByTagName("age").item(0).getTextContent());
             int answerDelay = Integer.parseInt(eElement.getElementsByTagName("delaiReponse").item(0).getTextContent());
             Host host = new Host(firstName, lastName, age, answerDelay);
+            listHotes.add(host);
 
             // on récupère la valeur du prix par nuit et on la parse
             NodeList pricesNodeList = doc.getElementsByTagName("tarifParNuit");
@@ -74,7 +75,7 @@ public class XmlParser {
             int balconySurface = Integer.parseInt(balconySurfaceNode.getTextContent());
 
             Appartment appartment = new Appartment(host, priceByNight,address,superficie, maxTraveller, floor, balconySurface);
-            arrayList.add(appartment);
+            listLogements.add(appartment);
         }
 
         // On itère sur le nombre des maison
@@ -124,7 +125,7 @@ public class XmlParser {
 
 
                 House house = new House(host, priceByNight,address,superficie, maxTraveller, garden, havePool);
-                arrayList.add(house);
+                listLogements.add(house);
                 }
             } catch (Exception e) {
         System.out.println("Une erreur s'est produite lors de la lecture du fichier xml");;
